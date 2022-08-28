@@ -5,6 +5,7 @@ Keywords:
 - Apache Camel
 - Java Spring
 - Docker
+- Active MQ
 
 ## Apache Camel
 
@@ -80,3 +81,36 @@ $ docker container run -p 5000:5000 -d -m 512m --cpu-quota 5000 in28min/todo-res
 # show docker disk space
 $ docker system df
 ```
+
+## ActiveMQ
+
+```bash
+$ docker run -p 61616:61616 -p 8161:8161 rmohr/activemq
+```
+
+## Camel - Terminology
+
+- Camel Context (0..n) Routes + Components + ...
+  - Endpoint - Reference to a queue, database or file
+  - Route - Endpoints + Processor(s) + Transformer(s)
+
+[Simple language Camel](https://camel.apache.org/components/3.18.x/languages/simple-language.html)
+
+## Enterprise Integration Patterns
+
+- **Pipeline** - the default in Camel - `pipeline()`
+- **Content based routing** - `choice()`
+- **Multicast** - send the same message to multiple endpoints - `multicast()`
+- **Splitter** - split a single message into multiple messages - `split()`
+- **Aggregate** - combine multiple messages into a single message - `aggregate()`
+- **Routing slip** - similar to multicast, but the logic to which endpoint we send is dynamic - `routingSlip()`
+- **Dynamic route** - after each step, we decide which endpoints to execute `dynamicRouter()`
+
+## Other referehces
+
+- [Why Camel?](https://camel.apache.org/manual/latest/faq/why-the-name-camel.html)
+- [Camel Examples](https://github.com/apache/camel-examples/tree/master/examples)
+- [Camel Spring Boot Configuration](https://camel.apache.org/camel-spring-boot/latest/spring-boot.html)
+- [Complete Spring Boot Starters List](https://camel.apache.org/camel-spring-boot/latest/list.html)
+- [Camel Spring Boot Examples](https://github.com/apache/camel-spring-boot-examples)
+- [Enterprise Integration Patterns](https://camel.apache.org/components/latest/eips/enterprise-integration-patterns.html)
